@@ -141,30 +141,47 @@ const Services = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-blue-950/30 dark:to-purple-950/30 overflow-hidden"
+      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-blue-50/30 dark:from-slate-900 dark:via-indigo-950/30 dark:to-blue-950/30 overflow-hidden"
     >
-      {/* Background decorations */}
+      {/* Background decorations - consistent with other sections */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360],
           }}
           transition={{
-            duration: 20,
+            duration: 25,
             repeat: Infinity,
             ease: "linear",
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-green-400/20 to-blue-400/20 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-br from-green-400/10 to-blue-400/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Animated grid pattern */}
+        <motion.div
+          className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.5) 1px, transparent 0)`,
+            backgroundSize: "50px 50px",
+          }}
+          animate={{
+            backgroundPosition: ["0px 0px", "50px 50px"],
+          }}
+          transition={{
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
           }}

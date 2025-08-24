@@ -139,12 +139,12 @@ const Partners = () => {
     <section
       id="partners"
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/50 dark:from-slate-900 dark:via-blue-950/50 dark:to-indigo-950/50 overflow-hidden"
+      className="relative py-20 md:py-32 bg-gradient-to-br from-gray-50 via-purple-50/30 to-pink-50/30 dark:from-gray-900 dark:via-purple-950/30 dark:to-pink-950/30 overflow-hidden"
     >
-      {/* Background decorations */}
+      {/* Background decorations - consistent with other sections */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360],
@@ -156,13 +156,30 @@ const Partners = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-br from-green-400/10 to-blue-400/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-72 h-72 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
           }}
           transition={{
             duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Animated grid pattern */}
+        <motion.div
+          className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.5) 1px, transparent 0)`,
+            backgroundSize: "50px 50px",
+          }}
+          animate={{
+            backgroundPosition: ["0px 0px", "50px 50px"],
+          }}
+          transition={{
+            duration: 20,
             repeat: Infinity,
             ease: "linear",
           }}
