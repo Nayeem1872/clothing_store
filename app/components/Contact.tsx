@@ -498,7 +498,7 @@ const Contact = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 font-semibold"
+                className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-semibold"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule Video Call
