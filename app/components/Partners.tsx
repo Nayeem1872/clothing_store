@@ -395,42 +395,6 @@ const Partners = () => {
             </Marquee>
           </div>
         </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="text-center"
-        >
-          <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Connect with Our Manufacturing Network?
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Join our network of successful brands and access vetted
-              manufacturers worldwide.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
-              >
-                <Users className="w-5 h-5 mr-2" />
-                Join Our Network
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 font-semibold"
-              >
-                <Globe className="w-5 h-5 mr-2" />
-                Explore Partners
-              </Button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

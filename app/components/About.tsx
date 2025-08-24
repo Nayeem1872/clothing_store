@@ -109,7 +109,7 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-blue-950/30 dark:to-purple-950/30 overflow-hidden"
+      className="relative pt-20 md:pt-32 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-blue-950/30 dark:to-purple-950/30 overflow-hidden"
     >
       {/* Background decorations - matching other sections */}
       <div className="absolute inset-0 overflow-hidden">
@@ -307,63 +307,6 @@ const About = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Timeline Section */}
-        <motion.div
-          className="mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <motion.h3
-            variants={itemVariants}
-            className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 dark:text-gray-100"
-          >
-            Our Journey
-          </motion.h3>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className={`flex items-center gap-8 ${
-                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                  }`}
-                >
-                  <div
-                    className={`flex-1 ${
-                      index % 2 === 0 ? "text-right" : "text-left"
-                    }`}
-                  >
-                    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
-                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                        {milestone.year}
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                        {milestone.title}
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Timeline dot */}
-                  <div className="relative z-10">
-                    <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-white dark:border-gray-900 shadow-lg" />
-                  </div>
-
-                  <div className="flex-1" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
