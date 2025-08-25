@@ -251,7 +251,7 @@ const Footer = () => {
                   },
                   {
                     icon: Globe,
-                    text: "www.rtrade.com",
+                    text: "www.trtrade.co",
                     color: "text-cyan-400",
                   },
                 ].map((contact, index) => (
@@ -561,34 +561,25 @@ const Footer = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                R Trade is a leading garment sourcing company based in
+                TR Trade is a leading garment sourcing company based in
                 Bangladesh, connecting global brands with premium manufacturers
                 since 2009. We specialize in quality assurance, sustainable
                 practices, and ethical manufacturing partnerships.
               </motion.p>
               <div className="flex flex-col sm:flex-row items-center gap-6">
-                {[
-                  {
-                    icon: Users,
-                    text: "50+ Countries Served",
-                    color: "text-cyan-400",
-                  },
-                  {
-                    icon: Award,
-                    text: "98% Success Rate",
-                    color: "text-green-400",
-                  },
-                ].map((stat, index) => (
-                  <motion.span
-                    key={index}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <stat.icon className={`w-3 h-3 ${stat.color}`} />
-                    <span className="text-gray-300">{stat.text}</span>
-                  </motion.span>
-                ))}
+                <motion.div
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                  <span className="text-gray-400 text-xs">
+                    Powered by{" "}
+                    <span className="text-purple-400 font-semibold">
+                      AAtron Solution
+                    </span>
+                  </span>
+                </motion.div>
               </div>
             </div>
           </motion.div>

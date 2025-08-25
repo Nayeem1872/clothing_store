@@ -18,12 +18,27 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  // Form state management
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,10 +63,77 @@ const Contact = () => {
     },
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error status when user starts typing
+    if (submitStatus === "error") {
+      setSubmitStatus("idle");
+      setErrorMessage("");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert("Message sent! We'll be in touch soon.");
+
+    // Validate required fields
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      setErrorMessage(
+        "Please fill in all required fields (Name, Email, and Message)"
+      );
+      setSubmitStatus("error");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => setSubmitStatus("idle"), 5000);
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(
+          result.error || "Failed to send message. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+      setErrorMessage(
+        "Network error. Please check your connection and try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
@@ -353,6 +435,42 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Status Messages */}
+                    {submitStatus === "success" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg"
+                      >
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
+                          <p className="text-green-800 dark:text-green-300 font-medium">
+                            Message sent successfully! We'll get back to you
+                            within 24 hours.
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg"
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">
+                              !
+                            </span>
+                          </div>
+                          <p className="text-red-800 dark:text-red-300 font-medium">
+                            {errorMessage}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+
                     <div className="grid grid-cols-1 gap-4">
                       <div>
                         <label
@@ -363,9 +481,13 @@ const Contact = () => {
                         </label>
                         <Input
                           id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
                           placeholder="Enter your full name"
                           required
-                          className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                          disabled={isSubmitting}
+                          className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                         />
                       </div>
                       <div>
@@ -377,10 +499,14 @@ const Contact = () => {
                         </label>
                         <Input
                           id="email"
+                          name="email"
                           type="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
                           placeholder="your.email@company.com"
                           required
-                          className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                          disabled={isSubmitting}
+                          className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                         />
                       </div>
                     </div>
@@ -394,8 +520,12 @@ const Contact = () => {
                       </label>
                       <Input
                         id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
                         placeholder="Your company name"
-                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                        disabled={isSubmitting}
+                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                       />
                     </div>
 
@@ -408,9 +538,13 @@ const Contact = () => {
                       </label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         placeholder="+1 (555) 123-4567"
-                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                        disabled={isSubmitting}
+                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                       />
                     </div>
 
@@ -423,8 +557,12 @@ const Contact = () => {
                       </label>
                       <Input
                         id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
                         placeholder="What can we help you with?"
-                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                        disabled={isSubmitting}
+                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                       />
                     </div>
 
@@ -437,25 +575,47 @@ const Contact = () => {
                       </label>
                       <Textarea
                         id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         placeholder="Tell us about your garment sourcing requirements, quantities, timeline, and any specific needs..."
                         rows={4}
                         required
-                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
+                        disabled={isSubmitting}
+                        className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 disabled:opacity-50"
                       />
                     </div>
 
                     <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                      whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                     >
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                         size="lg"
                       >
-                        <Send className="h-5 w-5 mr-2" />
-                        Send Message
-                        <ArrowRight className="h-5 w-5 ml-2" />
+                        {isSubmitting ? (
+                          <>
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{
+                                duration: 1,
+                                repeat: Infinity,
+                                ease: "linear",
+                              }}
+                              className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                            />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-5 w-5 mr-2" />
+                            Send Message
+                            <ArrowRight className="h-5 w-5 ml-2" />
+                          </>
+                        )}
                       </Button>
                     </motion.div>
 
