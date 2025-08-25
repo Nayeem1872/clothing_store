@@ -7,13 +7,21 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ReactNode } from "react";
+import MeetingModal from "./MeetingModal";
 
-const InteractiveHoverButton = ({ children }: { children: ReactNode }) => {
+const InteractiveHoverButton = ({
+  children,
+  onClick,
+}: {
+  children: ReactNode;
+  onClick?: () => void;
+}) => {
   return (
     <motion.button
+      onClick={onClick}
       whileHover={{
         scale: 1.05,
         boxShadow: "0 20px 40px rgba(39, 74, 253, 0.4)",
@@ -75,6 +83,8 @@ const FloatingElement = ({
 
 const Hero = () => {
   const ref = useRef(null);
+  const [isMeetingModalOpen, setIsMeetingModalOpen] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -312,7 +322,9 @@ const Hero = () => {
         </motion.p>
 
         <motion.div variants={itemVariants}>
-          <InteractiveHoverButton>Schedule a Meeting</InteractiveHoverButton>
+          <InteractiveHoverButton onClick={() => setIsMeetingModalOpen(true)}>
+            Schedule a Meeting
+          </InteractiveHoverButton>
         </motion.div>
 
         {/* Stats or features */}
@@ -457,6 +469,12 @@ const Hero = () => {
           ease: "easeInOut",
           delay: 1,
         }}
+      />
+
+      {/* Meeting Modal */}
+      <MeetingModal
+        isOpen={isMeetingModalOpen}
+        onClose={() => setIsMeetingModalOpen(false)}
       />
     </section>
   );

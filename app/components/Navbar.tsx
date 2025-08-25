@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils";
 import ThemeToggle1 from "./ThemeToggle";
 import { useIsMobile } from "../hooks/use-mobile";
 import Image from "next/image";
+import MeetingModal from "./MeetingModal";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMeetingModalOpen, setIsMeetingModalOpen] = useState(false);
   const isMobile = useIsMobile();
 
   const navItems = [
@@ -147,6 +149,7 @@ const Navbar = () => {
               >
                 <Button
                   size="sm"
+                  onClick={() => setIsMeetingModalOpen(true)}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Phone className="w-4 h-4 mr-2" />
@@ -251,7 +254,10 @@ const Navbar = () => {
                 >
                   <Button
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-lg"
-                    onClick={toggleMenu}
+                    onClick={() => {
+                      toggleMenu();
+                      setIsMeetingModalOpen(true);
+                    }}
                   >
                     <Phone className="w-4 h-4 mr-2" />
                     Get Quote
@@ -263,6 +269,12 @@ const Navbar = () => {
           </>
         )}
       </AnimatePresence>
+      
+      {/* Meeting Modal */}
+      <MeetingModal
+        isOpen={isMeetingModalOpen}
+        onClose={() => setIsMeetingModalOpen(false)}
+      />
     </motion.nav>
   );
 };
