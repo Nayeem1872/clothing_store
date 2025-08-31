@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tr Trade",
   description: "Tr trade",
+  icons: {
+    icon: "/icon",
+    shortcut: "/icon",
+    apple: "/icon",
+  },
 };
 
 export default function RootLayout({

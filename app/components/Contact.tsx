@@ -40,6 +40,27 @@ const Contact = () => {
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // WhatsApp functionality
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "+8801711123456"; // Replace with your actual WhatsApp number
+    const message = encodeURIComponent(
+      "Hello! I'm interested in your garment sourcing services. Could you please provide more information?"
+    );
+    const whatsappUrl = `https://wa.me/${phoneNumber.replace(
+      "+",
+      ""
+    )}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  // Handle contact method clicks
+  const handleContactMethodClick = (method: any) => {
+    if (method.title === "Live Chat") {
+      handleWhatsAppClick();
+    }
+    // Add other contact method handlers here if needed
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -141,7 +162,7 @@ const Contact = () => {
       icon: PhoneCall,
       title: "Call Us Directly",
       subtitle: "Speak with our sourcing experts",
-      value: "+880 1711-123456",
+      value: "+880 1706613046",
       description: "Available 24/7 for urgent inquiries",
       color: "from-blue-500 to-cyan-500",
     },
@@ -326,6 +347,7 @@ const Contact = () => {
                     variants={itemVariants}
                     whileHover={{ y: -5, scale: 1.02 }}
                     className="group cursor-pointer"
+                    onClick={() => handleContactMethodClick(method)}
                   >
                     <Card className="h-full border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative">
                       {/* Gradient border */}
@@ -653,12 +675,12 @@ const Contact = () => {
                 className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
               >
                 <PhoneCall className="w-5 h-5 mr-2" />
-                Call Now: +880 1711-123456
+                Call Now: +880 1706613046
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                className="border-white text-blue-600 hover:bg-white hover:text-blue-600 font-semibold"
+                variant="secondary"
+                className="bg-white/95 backdrop-blur-sm text-blue-600 hover:bg-white hover:text-blue-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white/50 hover:border-white"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule Video Call

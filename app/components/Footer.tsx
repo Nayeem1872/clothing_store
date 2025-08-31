@@ -236,12 +236,12 @@ const Footer = () => {
                 {[
                   {
                     icon: MapPin,
-                    text: "House 123, Road 45, Gulshan-2, Dhaka, Bangladesh",
+                    text: "House 27(5th Floor), Sector-14, Gausul Azam Avenue,Uttara Dhaka, Bangladesh",
                     color: "text-emerald-400",
                   },
                   {
                     icon: Phone,
-                    text: "+880 1711-123456",
+                    text: "+880 1706613046",
                     color: "text-blue-400",
                   },
                   {

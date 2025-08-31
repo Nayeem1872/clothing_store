@@ -287,7 +287,7 @@ const Services = () => {
                     </CardDescription>
 
                     {/* Features list */}
-                    <div className="space-y-2 mb-6">
+                    <div className="space-y-2 mb-4">
                       {service.features.map((feature, featureIndex) => (
                         <motion.div
                           key={featureIndex}
@@ -303,13 +303,13 @@ const Services = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <Button
+                    {/* <Button
                       variant="ghost"
                       className="w-full group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-300"
                     >
                       Learn More
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    </Button> */}
                   </CardContent>
                 </div>
               </Card>
