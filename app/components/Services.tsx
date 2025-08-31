@@ -131,7 +131,7 @@ const Services = () => {
   ];
 
   const stats = [
-    { number: "500+", label: "Manufacturing Partners", icon: Users },
+    { number: "100+", label: "Factories", icon: Users },
     { number: "98%", label: "On-time delivery rate", icon: Clock },
     { number: "50+", label: "Countries served", icon: Globe },
     { number: "24/7", label: "Customer support", icon: Shield },

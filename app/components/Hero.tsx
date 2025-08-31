@@ -259,7 +259,7 @@ const Hero = () => {
 
       {/* Hero Content */}
       <motion.div
-        className="relative z-10 text-center max-w-[876px] mx-auto px-4"
+        className="relative z-10 text-center max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl mx-auto px-4 lg:px-8 xl:px-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -277,7 +277,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.h1
-          className="font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6 text-center"
+          className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.1] tracking-tight mb-6 text-center px-2 sm:px-4 lg:px-8"
           variants={itemVariants}
         >
           <AnimatePresence mode="wait">
@@ -314,11 +314,12 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto leading-relaxed px-2 sm:px-4"
           variants={itemVariants}
         >
-          We bridge the gap between discerning buyers and premier garment
-          manufacturers, ensuring quality, reliability, and on-time delivery.
+          We connect buyers with leading garment manufacturers, delivering
+          quality, reliability, and timely supply, whether for custom orders or
+          ready-to-ship apparel such as jackets, shirts, and more.
         </motion.p>
 
         <motion.div variants={itemVariants}>
@@ -329,12 +330,12 @@ const Hero = () => {
 
         {/* Stats or features */}
         <motion.div
-          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto"
+          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto px-2 sm:px-4"
           variants={containerVariants}
         >
           {[
-            { number: "500+", label: "Trusted Partners" },
-            { number: "98%", label: "On-Time Delivery" },
+            { number: "400+", label: "Suppliers" },
+            { number: "100%", label: "On-Time Delivery" },
             { number: "24/7", label: "Support Available" },
           ].map((stat, index) => (
             <motion.div
@@ -404,7 +405,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div
-        className="absolute left-0 bottom-0 h-[90%] w-[300px] z-10 hidden lg:block"
+        className="absolute left-0 bottom-0 h-[90%] w-[200px] xl:w-[300px] z-10 hidden lg:block"
         variants={humanFigureVariants}
         initial="hidden"
         animate="visible"
@@ -425,7 +426,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div
-        className="absolute right-0 bottom-0 h-[90%] w-[300px] z-10 hidden lg:block"
+        className="absolute right-0 bottom-0 h-[90%] w-[200px] xl:w-[300px] z-10 hidden lg:block"
         variants={humanFigureRightVariants}
         initial="hidden"
         animate="visible"

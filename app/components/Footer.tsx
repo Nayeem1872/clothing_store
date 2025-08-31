@@ -221,7 +221,7 @@ const Footer = () => {
               >
                 Your trusted partner in global garment sourcing and
                 manufacturing. Connecting brands with premium manufacturers
-                since 2009 with a focus on quality, sustainability, and ethical
+                since 2016 with a focus on quality, sustainability, and ethical
                 practices.
               </motion.p>
 
@@ -457,7 +457,7 @@ const Footer = () => {
                     icon: Users,
                   },
                   {
-                    value: "15+",
+                    value: "9+",
                     label: "Years",
                     color: "from-purple-500 to-pink-500",
                     icon: Clock,
@@ -563,7 +563,7 @@ const Footer = () => {
               >
                 TR Trade is a leading garment sourcing company based in
                 Bangladesh, connecting global brands with premium manufacturers
-                since 2009. We specialize in quality assurance, sustainable
+                since 2016. We specialize in quality assurance, sustainable
                 practices, and ethical manufacturing partnerships.
               </motion.p>
               <div className="flex flex-col sm:flex-row items-center gap-6">

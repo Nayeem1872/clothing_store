@@ -50,7 +50,7 @@ const About = () => {
     },
     {
       icon: TrendingUp,
-      value: "15+",
+      value: "9+",
       label: "Years Experience",
       color: "from-purple-500 to-pink-500",
     },
@@ -69,7 +69,7 @@ const About = () => {
   ];
 
   const benefits = [
-    { text: "15+ years of garment sourcing expertise", icon: Award },
+    { text: "9+ years of garment sourcing expertise", icon: Award },
     { text: "Ethical manufacturing & fair trade practices", icon: Heart },
     { text: "End-to-end quality assurance guarantee", icon: Shield },
     { text: "Transparent supply chain management", icon: Target },
@@ -79,7 +79,7 @@ const About = () => {
 
   const milestones = [
     {
-      year: "2009",
+      year: "2016",
       title: "Company Founded",
       description: "Started as a small sourcing agency in Dhaka, Bangladesh",
     },
@@ -182,7 +182,7 @@ const About = () => {
             variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
           >
-            Since 2009, we've been connecting global brands with premium
+            Since 2016, we've been connecting global brands with premium
             manufacturers, ensuring quality, sustainability, and ethical
             practices throughout the supply chain.
           </motion.p>
