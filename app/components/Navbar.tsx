@@ -76,7 +76,7 @@ const Navbar = () => {
           >
             <Image
               src="/images/logo.png"
-              alt="R Trade Logo"
+              alt="TR Trade Logo"
               width={50}
               height={50}
               className="rounded-lg"
@@ -88,7 +88,7 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            R TRADE
+            TR TRADE
           </motion.span>
         </motion.div>
 
@@ -269,7 +269,7 @@ const Navbar = () => {
           </>
         )}
       </AnimatePresence>
-      
+
       {/* Meeting Modal */}
       <MeetingModal
         isOpen={isMeetingModalOpen}

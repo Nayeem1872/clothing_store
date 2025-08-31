@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 28px;">New Meeting Request</h1>
-          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">From R Trade Website</p>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">From TR Trade Website</p>
         </div>
         
         <div style="background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -189,7 +189,7 @@ ${message}
           
           <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e5e7eb;">
             <p style="color: #6b7280; margin: 0; font-size: 14px;">
-              This meeting request was submitted from the R Trade website.<br>
+              This meeting request was submitted from the TR Trade website.<br>
               Please respond to <a href="mailto:${email}" style="color: #2563eb;">${email}</a> to confirm the meeting.
             </p>
           </div>
@@ -202,7 +202,7 @@ ${message}
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
         <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 28px;">Meeting Request Confirmed</h1>
-          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">R Trade - Garment Sourcing</p>
+          <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">TR Trade - Garment Sourcing</p>
         </div>
         
         <div style="background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
@@ -245,7 +245,7 @@ ${message}
 
     // Send email to business
     const businessMailOptions = {
-      from: `"R Trade Meeting System" <${process.env.EMAIL_USER}>`,
+      from: `"TR Trade Meeting System" <${process.env.EMAIL_USER}>`,
       to: "hasibul.islam.1872@gmail.com",
       replyTo: email,
       subject: `New Meeting Request - ${selectedMeeting.label} on ${formatDate(
@@ -273,7 +273,7 @@ Please respond to ${email} to confirm the meeting.
 
     // Send confirmation email to client
     const clientMailOptions = {
-      from: `"R Trade" <${process.env.EMAIL_USER}>`,
+      from: `"TR Trade" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `Meeting Request Confirmed - ${selectedMeeting.label}`,
       html: clientEmailHTML,
@@ -289,7 +289,7 @@ Requested Time: ${preferredTime} (${timezone})
 We'll review your request and get back to you within 24 hours to confirm the details.
 
 Best regards,
-R Trade Team
+TR Trade Team
       `,
     };
 

@@ -144,7 +144,7 @@ ${message}
 
     // Email options
     const mailOptions = {
-      from: `"R Trade Contact Form" <${process.env.EMAIL_USER}>`,
+      from: `"TR Trade Contact Form" <${process.env.EMAIL_USER}>`,
       to: "hasibul.islam.1872@gmail.com",
       replyTo: email,
       subject: subject
@@ -164,7 +164,7 @@ Message:
 ${message}
 
 ---
-This email was sent from the R Trade contact form.
+This email was sent from the TR Trade contact form.
 Please respond to ${email} directly.
       `,
     };

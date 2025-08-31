@@ -167,7 +167,7 @@ const About = () => {
           <motion.div variants={itemVariants} className="mb-4">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100/80 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium border border-blue-200/50 dark:border-blue-800/50 backdrop-blur-sm">
               <Sparkles className="w-4 h-4" />
-              About R Trade
+              About TR Trade
             </span>
           </motion.div>
 

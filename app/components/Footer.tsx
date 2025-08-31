@@ -188,7 +188,7 @@ const Footer = () => {
               >
                 <Image
                   src="/images/logo.png"
-                  alt="R Trade Logo"
+                  alt="TR Trade Logo"
                   width={50}
                   height={50}
                   className="rounded-lg"
@@ -199,7 +199,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    R TRADE
+                    TR TRADE
                   </motion.span>
                   <motion.span
                     className="block text-sm text-blue-300/80 font-medium tracking-wider"
@@ -506,7 +506,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                &copy; {currentYear} R Trade. All rights reserved.
+                &copy; {currentYear} TR Trade. All rights reserved.
               </motion.p>
               <motion.div
                 className="flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30"
